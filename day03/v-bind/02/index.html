@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>v-bindで画像切り替え</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <img v-bind:src="imagePath" v-bind:height="height" />
+        <!-- v-bindの省略形 v-bind と : -->
+        <img v-bind:src="imagePath" :height="height" />
+      </div>
+      <div>
+        <!-- v-onの省略形 v-onと @ -->
+        <button @click="clickDogButton">イヌ</button>
+        <button @click="clickCatButton">ネコ</button>
+        <button @click="clickChangeHeight">高さを500にする</button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          imagePath: "",
+          height: 100
+        },
+        methods: {
+          clickDogButton: function() {
+            this.imagePath =
+              "https://cdn.pixabay.com/photo/2016/02/26/16/32/dog-1224267__340.jpg";
+          },
+          clickCatButton: function() {
+            this.imagePath =
+              "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554__340.jpg";
+          },
+          clickChangeHeight: function() {
+            this.height = 500;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

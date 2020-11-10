@@ -6,20 +6,11 @@
 
 ### vue を使ってみよう
 
-- v-on
+- v-bind
 
-```
-v-on:click="関数名()"
-or
-v-on:click="関数名"
-```
+- v-bind で画像の切り替え
+- v-bind の省略形 `:`
 
-```
-methods: {
-    関数名: function() {
-        // 処理
-    }
-}
-```
+- v-on の省略形　`@`
 
 について書いていきました。
