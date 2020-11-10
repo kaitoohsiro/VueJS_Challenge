@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(person, i)  in persons">
+          {{ i + 1 }} {{ person.name }}({{ person.age }}歳)
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          persons: [
+            {
+              name: "大城",
+              age: 22,
+              address: {
+                prefecture: "沖縄県",
+                city: "豊見城市",
+                town: "伊良波"
+              }
+            },
+            {
+              name: "鈴木",
+              age: 12,
+              address: {
+                prefecture: "沖縄県",
+                city: "那覇市",
+                town: "おもろまち"
+              }
+            },
+            {
+              name: "佐藤",
+              age: 23,
+              address: {
+                prefecture: "東京都",
+                city: "千代田区",
+                town: "東京"
+              }
+            },
+            {
+              name: "金城",
+              age: 44,
+              address: {
+                prefecture: "千葉県",
+                city: "千葉市",
+                town: "千葉町"
+              }
+            }
+          ]
+        },
+        methods: {},
+        created() {}
+      });
+    </script>
+  </body>
+</html>
