@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{ counter }}</div>
+      <div>{{ q }}</div>
+      <div>
+        <button v-on:click="increment">1を足す</button>
+        <!-- <button v-on:click="increment()">1を足す</button>  increment()　カッコは入れても入れなくても関数として反応する -->
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0,
+          q: 0
+        },
+        methods: {
+          increment: function() {
+            this.counter++;
+            this.q += 2;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
