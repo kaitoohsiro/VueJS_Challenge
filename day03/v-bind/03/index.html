@@ -11,13 +11,23 @@
       .blue {
         background-color: blue;
       }
+      .border {
+        border: double 10px blue;
+      }
     </style>
     <title>Document</title>
   </head>
   <body>
     <div id="app">
-      <div v-bind:class="{warning: isActive}">これは警告です</div>
-      <div v-bind:class="styleBlue">これは警告です</div>
+      <div v-bind:class="{warning: isActive}">
+        これは警告です オブジェクトでクラス属性設定
+      </div>
+      <div v-bind:class="styleBlue">
+        これは警告です オブジェクトでクラスの挿入を設定
+      </div>
+      <div v-bind:class="[warningClass, borderClass]">
+        これは警告です 配列でクラスの挿入を設定
+      </div>
 
       <div>
         <button @click="swichWarning">切り替える</button>
@@ -32,7 +42,9 @@
           // styleblueというオブジェクトの中に複数のクラスを用意できるようにした
           styleBlue: {
             blue: false
-          }
+          },
+          warningClass: "warning",
+          borderClass: "border"
         },
         methods: {
           swichWarning: function() {
