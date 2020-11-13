@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <h2>
+          {{ judge }}
+        </h2>
+      </div>
+      <!-- 敵の手 -->
+      <div>
+        <img height="300px;" :src="enemyHandImage" />
+      </div>
+      <!-- 自分の手 -->
+      <div>
+        <button v-on:click="fight('paa')">グー</button>
+        <button v-on:click="fight('choki')">チョキ</button>
+        <button v-on:click="fight('paa')">パー</button>
+      </div>
+      <div>
+        <p>自分の手: {{ myHand }}</p>
+        <p>コンピュータの手: {{ enemyHand }}</p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          enemyHandImage:
+            "https://cdn.pixabay.com/photo/2017/04/27/01/31/question-2264166__340.png",
+          hand: ["goo", "choki", "paa"],
+          judge: "いざ尋常に勝負！！",
+          myHand: "?",
+          enemyHand: "?"
+        },
+        methods: {
+          fight: function(myHand) {
+            // 敵の手をランダムできめる
+            // 0 1 2のいずれかの数字をランダムに生成する
+            var index = Math.floor(Math.random() * Math.floor(3));
+            var enemyHand = this.hand[index];
+
+            if (enemyHand === "goo") {
+              this.enemyHand = "グー";
+            }
+            if (enemyHand === "choki") {
+              this.enemyHand = "チョキ";
+            }
+            if (enemyHand === "paa") {
+              this.enemyHand = "パー";
+            }
+            if (myHand === "goo") {
+              this.myHand = "グー";
+            }
+            if (myHand === "choki") {
+              this.myHand = "チョキ";
+            }
+            if (myHand === "paa") {
+              this.myHand = "パー";
+            }
+
+            if (enemyHand === "goo") {
+              this.enemyHandImage =
+                "https://shop15-makeshop.akamaized.net/shopimages/shinanotent/000000000523_UAVLX6t.jpg";
+            }
+            if (enemyHand === "choki") {
+              this.enemyHandImage =
+                "https://shop15-makeshop.akamaized.net/shopimages/shinanotent/000000000525_lgUwBM9.jpg";
+            }
+            if (enemyHand === "paa") {
+              this.enemyHandImage =
+                "https://www.silhouette-illust.com/wp-content/uploads/2016/11/17431-300x300.jpg";
+            }
+
+            // 自分の手と敵の手を比較する
+            console.log("敵の手:" + enemyHand);
+            console.log("自分の手:" + myHand);
+            // 引き分け
+            if (enemyHand == myHand) {
+              this.judge = "引き分け";
+              console.log("aaaaaf");
+            }
+            // 勝ち判定
+            if (enemyHand === "goo" && myHand === "paa") {
+              this.judge = "勝ち(^_^)";
+            }
+            if (enemyHand === "choki" && myHand === "goo") {
+              this.judge = "勝ち(^_^)";
+            }
+            if (enemyHand === "paa" && myHand === "choki") {
+              this.judge = "勝ち(^_^)";
+            }
+            // 負け判定
+            if (enemyHand === "goo" && myHand === "choki") {
+              this.judge = "負け...(>_<)";
+            }
+            if (enemyHand === "choki" && myHand === "paa") {
+              this.judge = "負け...(>_<)";
+            }
+            if (enemyHand === "paa" && myHand === "goo") {
+              this.judge = "負け...(>_<)";
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
