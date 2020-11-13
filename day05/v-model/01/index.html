@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- input text -->
+      <input type="text" v-model="user" />
+      <p>{{ user }}</p>
+      <!-- textarea -->
+      <textarea v-model="article" cols="30" rows="10"></textarea>
+      <p>{{ article }}</p>
+      <!-- htmlの改行を考慮するタグ -->
+      <pre>{{ article }}</pre>
+
+      <input type="checkbox" v-model="agree" value="1" />ギター<br />
+      <input type="checkbox" v-model="agree" value="2" />ダイビング<br />
+      <input type="checkbox" v-model="agree" value="3" />ドライブ<br />
+      <p>{{ agree }}</p>
+
+      <input type="radio" v-model="hobby" value="1" />ギター<br />
+      <input type="radio" v-model="hobby" value="2" />ダイビング<br />
+      <input type="radio" v-model="hobby" value="3" />ドライブ<br />
+      <p>{{ hobby }}</p>
+
+      <select　v-model="todo1">
+        <option disabled value="">選択してください</option>
+        <option>ギター</option>
+        <option>ダイビング</option>
+        <option>ドライブ</option>
+      </select>
+      <p>{{ todo1 }}</p>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          user: "",
+          article: "",
+          agree: [],
+          hobby: null,
+          todo1: 1
+        }
+      });
+    </script>
+  </body>
+</html>
