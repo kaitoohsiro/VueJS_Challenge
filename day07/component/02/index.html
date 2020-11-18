@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+        <!-- それぞれのプロパティに対してカウンターを持っているからそれぞれ独自に動く -->
+        <paragraph message="hello"></paragraph>
+        <paragraph message="world"></paragraph>
+        <paragraph></paragraph>
+        <paragraph></paragraph>
+        <paragraph></paragraph>
+        <paragraph></paragraph>
+        <paragraph></paragraph>
+        <paragraph></paragraph>
+
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // コンポーネントを用意することで、以下のように表示することができす。
+        Vue.component('paragraph', {
+            props: ["message"],
+            template: '<p>{{ message }}</p>'
+        })
+        new Vue({
+            el: "#app",
+            data: {
+                // message: ''
+            },
+            methods: {},
+        })
+    </script>
+  </body>
+</html>
