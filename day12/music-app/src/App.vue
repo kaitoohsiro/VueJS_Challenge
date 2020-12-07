@@ -1,17 +1,15 @@
 <template>
   <v-app>
-    <v-app-bar app color="pink" dark>
+    <v-app-bar app color="indigo accent-3" dark>
       <div class="d-flex align-center">
-        <h1 class="mr-1">MUSIC SEARCH</h1>
+        <router-link to="/" style="color:white; text-decoration:none;">
+          <h1 class="mr-1">SEARCH</h1>
+        </router-link>
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
+      <v-btn text to="/">
         <span class="mr-2">HOME</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>

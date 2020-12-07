@@ -7,11 +7,12 @@
         </h1>
         <v-text-field
           :counter="100"
+          v-model="keyword"
           label="アーティスト名を入力してください。"
           required=""
         >
         </v-text-field>
-        <v-btn>検索</v-btn>
+        <v-btn @click="serch">検索</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -20,5 +21,16 @@
 <script>
 // @ is an alias to /src
 
-export default {};
+export default {
+  data() {
+    return {
+      keyword: ""
+    };
+  },
+  methods: {
+    serch() {
+      this.$router.push(`/result/${this.keyword}`);
+    }
+  }
+};
 </script>

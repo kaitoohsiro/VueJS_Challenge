@@ -9,20 +9,26 @@
       </v-col>
     </v-row>
 
-    <v-flex xs12>
-      <v-card color="blue-grey darken-2" class="white--text">
-        <v-card-title primary-title>
-          <div>
-            <div class="headline" v-text="title"></div>
-            <span v-text="artistName"></span>
-          </div>
-        </v-card-title>
-        <v-list-item-avatar size="125" tile>
-          <v-img :src="image"></v-img>
-        </v-list-item-avatar>
-        <v-card-actions>
-          <v-btn flat dark>Listen now</v-btn>
-        </v-card-actions>
+    <v-flex style="margin:10px;" xs12 v-for="(album, i) in albums" :key="i">
+      <v-card
+        color="black"
+        class="white--text"
+        :href="album.collectionViewUrl"
+        target="_blank"
+      >
+        <v-layout row>
+          <v-flex xs7>
+            <v-card-title primary-title style="text-align: center;">
+              <div>
+                <div class="headline" v-text="album.collectionName"></div>
+                <span class="grey--text" v-text="album.artistName"></span>
+              </div>
+            </v-card-title>
+          </v-flex>
+          <v-flex xs5>
+            <v-img :src="album.artworkUrl100" height="125px" contain></v-img>
+          </v-flex>
+        </v-layout>
       </v-card>
     </v-flex>
   </v-container>
@@ -30,15 +36,23 @@
 
 <script>
 // @ is an alias to /src
-
+import axios from "axios";
 export default {
   data() {
     return {
-      title: "アルバムタイトル",
-      artistName: "アーティスト名",
-      image:
-        "https://cdn.pixabay.com/photo/2020/08/15/18/26/european-bee-eater-5491117_1280.jpg"
+      albums: []
     };
+  },
+  created() {
+    const vm = this;
+    axios
+      .get(
+        `https://itunes.apple.com/search?term=${this.$route.params.keyword}&entity=album`
+      )
+      .then(response => {
+        console.log(response);
+        vm.albums = response.data.results;
+      });
   }
 };
 </script>
